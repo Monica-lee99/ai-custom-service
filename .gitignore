@@ -24,6 +24,7 @@ yarn-error.log*
 .eslintcache
 
 /Server/node_modules
+/Server/scenes
 /Server/log
 /log
 yarn.lock
