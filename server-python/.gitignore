@@ -2,6 +2,5 @@ __pycache__/
 *.py[cod]
 *.env
 *.json
-!template.json
-
-scenes/
+scenes/*
+!scenes/template.json
