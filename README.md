@@ -14,6 +14,14 @@
 ### 1. 运行环境
 需要准备两个 Terminal，分别启动服务端和前端页面。
 
+本项目包含三种后端实现，但它们都默认使用 `3001` 端口，请只选择其中一种启动：
+
+- `Server/`：上传 Demo 默认的 Node.js 服务，读取 `Server/scenes/*.json`。
+- `server_python/`：上传 Demo 中的 Python FastAPI 代理实现。
+- `rag_llm_server/`：带知识库检索、Ark 大模型和 RTC 回调的 FastAPI 服务。
+
+仓库中保留的 `server-python/`（连字符）是早期实验版本，不参与当前启动流程；请使用上面的 `server_python/`（下划线）。
+
 ### 2. 服务开通
 开通 ASR、TTS、LLM、RTC 等服务，可参考 [开通服务](https://www.volcengine.com/docs/6348/1315561?s=g) 进行相关服务的授权与开通。
 
@@ -40,23 +48,63 @@ Demo 中以 `Custom` 场景为例，您可以自行新增场景。
 #### 安装依赖
 ```shell
 cd Server
-yarn
+npm install
 ```
 #### 运行项目
 ```shell
-yarn dev
+npm run dev
 ```
 
 ### 前端页面
 进到项目根目录
 #### 安装依赖
 ```shell
-yarn
+npm install
 ```
 #### 运行项目
 ```shell
-yarn dev
+npm run dev
 ```
+
+### Python 服务（可选）
+
+如果使用上传项目中的 Python 代理实现，不要同时启动 Node 服务：
+
+```powershell
+cd D:\AiStudy\ai-custom-service
+python -m pip install -r server_python\requirements.txt
+python server_python\main.py
+```
+
+使用 `server_python` 时，请先复制 `server_python/scenes/template.json` 为
+`server_python/scenes/Custom.json`，再填写火山引擎账号、RTC 和 VoiceChat 参数。
+`Custom.json` 已加入 Git 忽略，模板文件仍会提交。
+
+如果使用带知识库和 Ark 大模型的服务：
+
+```powershell
+cd D:\AiStudy\ai-custom-service
+python -m pip install -r rag_llm_server\requirements.txt
+python rag_llm_server\main.py
+```
+
+`rag_llm_server` 需要配置以下环境变量（可放在 `rag_llm_server/.env`）：
+
+```env
+VOLC_ACCESS_KEY=火山引擎 AK
+VOLC_SECRET_KEY=火山引擎 SK
+ARK_ENDPOINT_ID=方舟推理接入点 ID
+ARK_API_KEY=方舟 API Key
+RTC_APP_ID=RTC 应用 AppId
+RTC_APP_KEY=RTC 应用 AppKey
+SERVER_URL=https://公网可访问的回调地址
+KB_COLLECTION_NAME=dw_ai
+KB_PROJECT_NAME=default
+VOLC_ACCOUNT_ID=知识库账号 ID
+```
+
+其中 `SERVER_URL` 不能填写只对本机可见的 `localhost`，因为 RTC 云端服务需要回调 `/api/chat_callback`。
+可直接复制 `rag_llm_server/.env.example` 为 `rag_llm_server/.env`，再填写实际值。
 
 ### 常见问题
 | 问题 | 解决方案 |
@@ -78,11 +126,6 @@ yarn dev
 - [场景介绍](https://www.volcengine.com/docs/6348/1310537?s=g)
 - [Demo 体验](https://www.volcengine.com/docs/6348/1310559?s=g)
 - [场景搭建方案](https://www.volcengine.com/docs/6348/1310560?s=g)
-
-## Security and privacy
-
-This project takes security seriously.
-For vulnerability reporting and supported versions, see [SECURITY.md](SECURITY.md)
 
 ## 更新日志
 

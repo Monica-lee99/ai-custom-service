@@ -21,6 +21,8 @@ function Antechamber() {
     dispatch(updateShowSubtitle({ isShowSubtitle: !isAvatarScene }));
 
     if (!joining) {
+
+      // 开启RTC服务，你进来，Ai进来，开始通话
       dispatchJoin();
     }
   };

@@ -11,7 +11,7 @@ const judgeMethodPath = (method) => {
 
 const readFiles = (dir, suffix) => {
     const scenes = {};
-    fs.readdirSync(path.join(__dirname, dir)).map((p) => {
+    fs.readdirSync(path.join(__dirname, dir)).filter((p) => p !== 'template.json').map((p) => {
         const data = JSON.parse(fs.readFileSync(path.join(__dirname, dir, p)));
         scenes[p.replace(suffix, '')] = data;
     });

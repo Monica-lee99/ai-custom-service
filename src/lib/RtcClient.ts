@@ -128,6 +128,7 @@ export class RTCClient {
 
   joinRoom = () => {
     console.log(' ------ userJoinRoom\n', `roomId: ${this.basicInfo.room_id}\n`, `uid: ${this.basicInfo.user_id}`);
+    console.log(' ------ joinRoom\n', `token: ${this.basicInfo.token}\n`, `roomId: ${this.basicInfo.room_id}\n`, `uid: ${this.basicInfo.user_id}`);
     return this.engine.joinRoom(
       this.basicInfo.token!,
       `${this.basicInfo.room_id!}`,
@@ -246,6 +247,9 @@ export class RTCClient {
   };
 
   publishStream = (mediaType: MediaType) => {
+    // RTC你准备开始听完说话
+    console.log('publishStream 我说话了。。。', mediaType);
+
     this.engine.publishStream(mediaType);
   };
 

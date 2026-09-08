@@ -28,6 +28,10 @@ yarn-error.log*
 !/Server/scenes/template.json
 /server-python/scenes/*
 !/server-python/scenes/template.json
+/server_python/scenes/*
+!/server_python/scenes/template.json
+/server-python/scenes/Custom1.json
+/server_python/scenes/Custom1.json
 /Server/log
 /log
 yarn.lock
@@ -36,3 +40,27 @@ pnpm-lock.yaml
 dist/
 log/
 
+**/__pycache__
+**/.env
+
+# Python
+*.pyc
+*.pyo
+*.egg-info/
+*.egg
+*.whl
+
+# Virtual environments
+**/.venv/
+**/venv/
+
+# uv lock files
+**/uv.lock
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db

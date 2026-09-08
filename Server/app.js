@@ -131,7 +131,7 @@ app.use(async ctx => {
   });
 });
 
-app.listen(3001, () => {
-  console.log('AIGC Server is running at http://localhost:3001');
+app.listen(3001, '0.0.0.0', () => {
+  console.log('AIGC Server is running at http://0.0.0.0:3001');
 });
 

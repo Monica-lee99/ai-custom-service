@@ -28,7 +28,7 @@ function Room() {
       {isShowSubtitle && !isMobile() ? (
         <UserTag name={scene} className={style.subTitleUserTag} />
       ) : null}
-      {isAvatarScene || (isFullScreen && !isMobile()) ? (
+      {(isFullScreen || isAvatarScene) && !isMobile() ? (
         <FullScreenCard />
       ) : isMobile() && isShowSubtitle ? null : (
         <AiAvatarCard

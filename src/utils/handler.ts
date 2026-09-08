@@ -152,6 +152,7 @@ export const useMessageHandler = () => {
       try {
         const { type, value } = tlv2String(buffer);
         maps[type as MESSAGE_TYPE]?.(JSON.parse(value));
+        console.log('parser agent回复消息', type, JSON.parse(value));
       } catch (e) {
         logger.debug('parse error', e);
       }

@@ -9,9 +9,9 @@ export const UserAgreement = 'https://www.volcengine.com/docs/6348/128955';
 
 /**
  * @note 请求的 API Proxy Server(对应此 Demo 中包含的 Node server) 地址。
- *       您可按需改成自己需要访问的地址。
+ *       动态使用当前页面的主机名，支持局域网访问
  */
-export const AIGC_PROXY_HOST = 'http://localhost:3001';
+export const AIGC_PROXY_HOST = `http://${window.location.hostname}:3001`;
 
 export interface IScene {
   icon: string;

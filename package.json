@@ -4,9 +4,9 @@
   "license": "BSD-3-Clause",
   "private": true,
   "dependencies": {
+    "@arco-design/web-react": "^2.65.0",
     "@reduxjs/toolkit": "^1.8.3",
     "@volcengine/rtc": "~4.66.20",
-    "@arco-design/web-react": "^2.65.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
@@ -17,7 +17,7 @@
   },
   "scripts": {
     "dev": "npm run echo && npm run start",
-    "start": "cross-env REACT_APP_LOCAL=cn  craco start",
+    "start": "cross-env REACT_APP_LOCAL=cn  craco start --host 0.0.0.0",
     "server:start": "node Server/app.js",
     "build": "craco build",
     "test": "craco test",
@@ -26,7 +26,9 @@
     "eslint": "eslint  src/ --fix --cache --quiet --ext .js,.jsx,.ts,.tsx",
     "stylelint": "stylelint 'src/**/*.less' --fix",
     "pre-commit": "npm run eslint && npm run stylelint",
-    "echo": "node message.js"
+    "echo": "node message.js",
+    "server:python": "python server_python/main.py",
+    "server:rag": "python rag_llm_server/main.py"
   },
   "eslintConfig": {
     "extends": [
@@ -47,14 +49,14 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^6.4.5",
+    "@craco/craco": "^7.1.0",
     "@types/lodash": "^4.17.4",
     "@types/node": "^16.11.45",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@types/react-helmet": "^6.1.11",
     "@types/uuid": "^8.3.4",
-    "craco-less": "^2.0.0",
+    "craco-less": "^2.1.0-alpha.0",
     "cross-env": "^7.0.3",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
